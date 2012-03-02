@@ -1,5 +1,5 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xp="http://www.litle.com/schema" targetNamespace="http://www.litle.com/schema" elementFormDefault="qualified" attributeFormDefault="unqualified">
-    <xs:include schemaLocation="litleCommon_v8.11.xsd"/>
+    <xs:include schemaLocation="litleCommon_v8.10.xsd"/>
 
     <xs:element name="transaction" type="xp:transactionType" abstract="true"/>
 
@@ -17,11 +17,11 @@
     </xs:complexType>
     
     <xs:complexType name="merchantDataType">
-        <xs:all>
-            <xs:element name="campaign" type="xp:campaignType" minOccurs="0"/>
-            <xs:element name="affiliate" type="xp:affiliateType" minOccurs="0"/>
-            <xs:element name="merchantGroupingId" type="xp:merchantGroupingIdType" minOccurs="0"/>
-        </xs:all>
+    	<xs:all>
+    		<xs:element name="campaign" type="xp:campaignType" minOccurs="0"/>
+    		<xs:element name="affiliate" type="xp:affiliateType" minOccurs="0"/>
+    		<xs:element name="merchantGroupingId" type="xp:merchantGroupingIdType" minOccurs="0"/>
+    	</xs:all>
     </xs:complexType>
 
     <xs:complexType name="transactionTypeWithReportGroupAndPartial">
@@ -53,8 +53,8 @@
         <xs:all>
             <xs:element name="name" type="xp:nameType" minOccurs="0"/>
             <xs:element name="firstName" type="xp:firstNameType" minOccurs="0"/>
-            <xs:element name="middleInitial" type="xp:middleInitialType" minOccurs="0"/>
-            <xs:element name="lastName" type="xp:lastNameType" minOccurs="0"/>
+			<xs:element name="middleInitial" type="xp:middleInitialType" minOccurs="0"/>
+			<xs:element name="lastName" type="xp:lastNameType" minOccurs="0"/>
             <xs:element name="companyName" type="xp:companyName" minOccurs="0"/>
             <xs:element name="addressLine1" type="xp:addressLineType" minOccurs="0"/>
             <xs:element name="addressLine2" type="xp:addressLineType" minOccurs="0"/>
@@ -412,30 +412,30 @@
                                     <xs:element name="card" type="xp:cardType"/>
                                     <xs:element name="token" type="xp:cardTokenType"/>
                                     <xs:element name="paypage" type="xp:cardPaypageType"/>
-                                    <xs:element name="paypal">
-                                        <xs:complexType>
-                                            <xs:choice>
-                                                <xs:element name="payerId" minOccurs="1">
-                                                    <xs:simpleType>
-                                                        <xs:restriction base="xs:string">
+	                                <xs:element name="paypal">
+	                                    <xs:complexType>
+	                                        <xs:choice>
+	                                            <xs:element name="payerId" minOccurs="1">
+	                                                <xs:simpleType>
+	                                                    <xs:restriction base="xs:string">
                                                             <xs:whiteSpace value="collapse"/>
-                                                            <xs:minLength value="1"/>
-                                                            <xs:maxLength value="17"/>
-                                                        </xs:restriction>
-                                                    </xs:simpleType>
-                                                </xs:element>
-                                                <xs:element name="payerEmail" minOccurs="1">
-                                                    <xs:simpleType>
-                                                        <xs:restriction base="xs:string">
+	                                                        <xs:minLength value="1"/>
+	                                                        <xs:maxLength value="17"/>
+	                                                    </xs:restriction>
+	                                                </xs:simpleType>
+	                                            </xs:element>
+	                                            <xs:element name="payerEmail" minOccurs="1">
+	                                                <xs:simpleType>
+	                                                    <xs:restriction base="xs:string">
                                                             <xs:whiteSpace value="collapse"/>
-                                                            <xs:minLength value="1"/>
-                                                            <xs:maxLength value="127"/>
-                                                        </xs:restriction>
-                                                    </xs:simpleType>
-                                                </xs:element>
-                                            </xs:choice>
-                                        </xs:complexType>
-                                    </xs:element>
+	                                                        <xs:minLength value="1"/>
+	                                                        <xs:maxLength value="127"/>
+	                                                    </xs:restriction>
+	                                                </xs:simpleType>
+	                                            </xs:element>
+	                                        </xs:choice>
+	                                    </xs:complexType>
+	                                </xs:element>
                                 </xs:choice>
                                 <xs:element ref="xp:customBilling" minOccurs="0"/>
                                 <xs:element name="taxType" type="xp:govtTaxTypeEnum" minOccurs="0"/>
@@ -468,25 +468,25 @@
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="healthcareIIAS">
+	<xs:element name="healthcareIIAS">
         <xs:complexType>
-            <xs:sequence>
-                <xs:element ref="xp:healthcareAmounts" minOccurs="1"/>
+        	<xs:sequence>
+        		<xs:element ref="xp:healthcareAmounts" minOccurs="1"/>
                 <xs:element name="IIASFlag" type="xp:IIASFlagType" minOccurs="1"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
     
     <xs:element name="healthcareAmounts">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="totalHealthcareAmount" type="xp:transactionAmountType" minOccurs="1"/>
-                <xs:element name="RxAmount" type="xp:transactionAmountType" minOccurs="0"/>
-                <xs:element name="visionAmount" type="xp:transactionAmountType" minOccurs="0"/>
-                <xs:element name="clinicOtherAmount" type="xp:transactionAmountType" minOccurs="0"/>
-                <xs:element name="dentalAmount" type="xp:transactionAmountType" minOccurs="0"/>
-            </xs:sequence>
-        </xs:complexType>
+	    <xs:complexType>
+	      	<xs:sequence>
+	           	<xs:element name="totalHealthcareAmount" type="xp:transactionAmountType" minOccurs="1"/>
+	            <xs:element name="RxAmount" type="xp:transactionAmountType" minOccurs="0"/>
+	            <xs:element name="visionAmount" type="xp:transactionAmountType" minOccurs="0"/>
+	            <xs:element name="clinicOtherAmount" type="xp:transactionAmountType" minOccurs="0"/>
+	            <xs:element name="dentalAmount" type="xp:transactionAmountType" minOccurs="0"/>
+	        </xs:sequence>
+	    </xs:complexType>
     </xs:element>
     
     <xs:element name="enhancedData">
@@ -574,7 +574,7 @@
             <xs:choice>
                 <xs:sequence>
                     <xs:element name="type" type="xp:methodOfPaymentTypeEnum"/>
-                    <xs:element name="number" type="xp:ccAccountNumberType" minOccurs="0"/>
+                  	<xs:element name="number" type="xp:ccAccountNumberType" minOccurs="0"/>
                     <xs:element name="expDate" type="xp:expDateType" minOccurs="0"/>
                 </xs:sequence>
                 <xs:sequence>
@@ -591,7 +591,7 @@
             <xs:element name="expDate" type="xp:expDateType" minOccurs="0"/>
             <xs:element name="cardValidationNum" type="xp:cvNumType" minOccurs="0"/>
             <xs:element name="type" type="xp:methodOfPaymentTypeEnum" minOccurs="0"/>
-        </xs:sequence>
+	    </xs:sequence>
     </xs:complexType>
 
     <xs:complexType name="cardPaypageType">
@@ -617,19 +617,19 @@
             <xs:element name="litleToken" type="xp:ccAccountNumberType" minOccurs="0"/>                        
             <xs:element name="tokenResponseCode" type="xp:responseType"/>
             <xs:element name="tokenMessage" type="xs:string"/>
-            <xs:element name="type" type="xp:methodOfPaymentTypeEnum" minOccurs="0"/>
+	        <xs:element name="type" type="xp:methodOfPaymentTypeEnum" minOccurs="0"/>
             <xs:element name="bin" type="xs:string" minOccurs="0"/>
             <xs:element name="eCheckAccountSuffix" type="xs:string" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
-    <xs:complexType name="payPal">
-        <xs:sequence>
-            <xs:element name="payerId" type="xs:string" minOccurs="1"/>
-            <xs:element name="token" type="xs:string" minOccurs="0"/>
-            <xs:element name="transactionId" type="xs:string" minOccurs="1"/>
-        </xs:sequence>
-    </xs:complexType>
+	<xs:complexType name="payPal">
+	    <xs:sequence>
+	        <xs:element name="payerId" type="xs:string" minOccurs="1"/>
+	        <xs:element name="token" type="xs:string" minOccurs="0"/>
+	        <xs:element name="transactionId" type="xs:string" minOccurs="1"/>
+	    </xs:sequence>
+	</xs:complexType>
 
     <xs:simpleType name="payPalNotesType">
         <xs:restriction base="xs:string">
@@ -637,14 +637,14 @@
         </xs:restriction>
     </xs:simpleType>
 
-    <xs:simpleType name="actionReasonType">
-        <xs:restriction base="xs:string">
-            <xs:maxLength value="255"/>
-            <!-- <xs:enumeration value="UNKNOWN" />
-            <xs:enumeration value="SUSPECT_FRAUD" /> -->
-        </xs:restriction>
-    </xs:simpleType>
-    
+	<xs:simpleType name="actionReasonType">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="255"/>
+			<!-- <xs:enumeration value="UNKNOWN" />
+			<xs:enumeration value="SUSPECT_FRAUD" /> -->
+		</xs:restriction>
+	</xs:simpleType>
+	
     <xs:element name="customBilling">
         <xs:complexType>
             <xs:sequence>
@@ -713,20 +713,20 @@
 
     <xs:element name="registerTokenRequest" substitutionGroup="xp:transaction" type="xp:registerTokenRequestType"/>
 
-    <xs:complexType name="registerTokenRequestType">
-        <xs:complexContent>
-            <xs:extension base="xp:transactionTypeWithReportGroup">
-                <xs:sequence>
-                    <xs:element name="orderId" type="xp:string25Type" minOccurs="0"/>
-                    <xs:choice>
-                        <xs:element name="accountNumber" type="xp:ccAccountNumberType"/>
-                        <xs:element name="echeckForToken" type="xp:echeckForTokenType"/>
-                        <xs:element name="paypageRegistrationId" type="xp:string512Type"/>
-                    </xs:choice>
-                </xs:sequence>
-            </xs:extension>
-        </xs:complexContent>
-    </xs:complexType>
+	<xs:complexType name="registerTokenRequestType">
+		<xs:complexContent>
+			<xs:extension base="xp:transactionTypeWithReportGroup">
+				<xs:sequence>
+					<xs:element name="orderId" type="xp:string25Type" minOccurs="0"/>
+					<xs:choice>
+						<xs:element name="accountNumber" type="xp:ccAccountNumberType"/>
+						<xs:element name="echeckForToken" type="xp:echeckForTokenType"/>
+						<xs:element name="paypageRegistrationId" type="xp:string512Type"/>
+					</xs:choice>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
 
     <xs:element name="registerTokenResponse" substitutionGroup="xp:transactionResponse">
         <xs:complexType>
@@ -738,7 +738,7 @@
                         <xs:element name="litleToken" type="xp:ccAccountNumberType" minOccurs="0"/>
                         <xs:element name="bin" type="xs:string" minOccurs="0"/>
                         <xs:element name="type" type="xp:methodOfPaymentTypeEnum" minOccurs="0"/>
-                        <xs:element name="eCheckAccountSuffix" type="xs:string" minOccurs="0"/>                        
+            			<xs:element name="eCheckAccountSuffix" type="xs:string" minOccurs="0"/>                        
                         <xs:element name="response" type="xp:responseType"/>
                         <xs:element name="message" type="xs:string"/>
                         <xs:element name="responseTime" type="xs:dateTime"/>
@@ -781,53 +781,53 @@
         </xs:complexType>
     </xs:element>
 
-    <xs:simpleType name="fundingSourceTypeEnum">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="UNKNOWN"/>
-            <xs:enumeration value="PREPAID"/>
-            <xs:enumeration value="FSA"/>
-            <xs:enumeration value="CREDIT"/>
-            <xs:enumeration value="DEBIT"/>
-        </xs:restriction>
-    </xs:simpleType>
+	<xs:simpleType name="fundingSourceTypeEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="PREPAID"/>
+			<xs:enumeration value="FSA"/>
+			<xs:enumeration value="CREDIT"/>
+			<xs:enumeration value="DEBIT"/>
+		</xs:restriction>
+	</xs:simpleType>
 
-    <xs:simpleType name="affluenceTypeEnum">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="AFFLUENT"/>
-            <xs:enumeration value="MASS AFFLUENT"/>
-        </xs:restriction>
-    </xs:simpleType>
-    
-    <xs:simpleType name="reloadablePrepaidTypeEnum">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="UNKNOWN"/>
-            <xs:enumeration value="YES"/>
-            <xs:enumeration value="NO"/>
-        </xs:restriction>
-    </xs:simpleType>
+	<xs:simpleType name="affluenceTypeEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="AFFLUENT"/>
+			<xs:enumeration value="MASS AFFLUENT"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="reloadablePrepaidTypeEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="YES"/>
+    		<xs:enumeration value="NO"/>
+		</xs:restriction>
+	</xs:simpleType>
 
-    <xs:simpleType name="cardProductTypeEnum">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="UNKNOWN"/>
-            <xs:enumeration value="COMMERCIAL"/>
-            <xs:enumeration value="CONSUMER"/>
-        </xs:restriction>
-    </xs:simpleType>
+	<xs:simpleType name="cardProductTypeEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="UNKNOWN"/>
+			<xs:enumeration value="COMMERCIAL"/>
+    		<xs:enumeration value="CONSUMER"/>
+		</xs:restriction>
+	</xs:simpleType>
 
-    <xs:complexType name="recycleAdviceType">
-        <xs:choice>
-            <xs:element name="nextRecycleTime" type="xs:dateTime"/>
-            <xs:element name="recycleAdviceEnd" type="xp:string20Type"/>
-        </xs:choice>
-    </xs:complexType>
+	<xs:complexType name="recycleAdviceType">
+		<xs:choice>
+			<xs:element name="nextRecycleTime" type="xs:dateTime"/>
+			<xs:element name="recycleAdviceEnd" type="xp:string20Type"/>
+		</xs:choice>
+	</xs:complexType>
 
-    <xs:simpleType name="recycleByTypeEnum">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="Merchant"/>
-            <xs:enumeration value="Litle"/>
-            <xs:enumeration value="None"/>
-        </xs:restriction>
-    </xs:simpleType>
+	<xs:simpleType name="recycleByTypeEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Merchant"/>
+			<xs:enumeration value="Litle"/>
+			<xs:enumeration value="None"/>
+		</xs:restriction>
+	</xs:simpleType>
 
     <xs:complexType name="recyclingType">
         <xs:sequence>
@@ -836,32 +836,32 @@
         </xs:sequence>
     </xs:complexType>
 
-    <xs:complexType name="recyclingRequestType">
-        <xs:sequence>
+	<xs:complexType name="recyclingRequestType">
+		<xs:sequence>
             <xs:element name="recycleBy" type="xp:recycleByTypeEnum" minOccurs="0"/>
             <xs:element name="recycleId" type="xp:string25Type" minOccurs="0"/>
-        </xs:sequence>
-    </xs:complexType>
-    
-    <xs:element name="enhancedAuthResponse">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="fundingSource" minOccurs="0">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="type" type="xp:fundingSourceTypeEnum"/>
-                            <xs:element name="availableBalance" type="xp:string20Type"/>
-                            <xs:element name="reloadable" type="xp:string50Type" minOccurs="0"/>
-                            <xs:element name="prepaidCardType" type="xp:string50Type" minOccurs="0"/>                           
-                        </xs:sequence>
-                    </xs:complexType>
-                </xs:element>
-                <xs:element name="affluence" type="xp:affluenceTypeEnum" minOccurs="0"/>
-                <xs:element name="issuerCountry" type="xp:string3Type" minOccurs="0"/>
-                <xs:element name="cardProductType" type="xp:cardProductTypeEnum" minOccurs="0"/>
-            </xs:sequence>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:element name="enhancedAuthResponse">
+	    <xs:complexType>
+	        <xs:sequence>
+			    <xs:element name="fundingSource" minOccurs="0">
+			        <xs:complexType>
+				        <xs:sequence>
+				       	    <xs:element name="type" type="xp:fundingSourceTypeEnum"/>
+							<xs:element name="availableBalance" type="xp:string20Type"/>
+							<xs:element name="reloadable" type="xp:string50Type" minOccurs="0"/>
+							<xs:element name="prepaidCardType" type="xp:string50Type" minOccurs="0"/>							
+				        </xs:sequence>
+			        </xs:complexType>
+			    </xs:element>
+			    <xs:element name="affluence" type="xp:affluenceTypeEnum" minOccurs="0"/>
+			    <xs:element name="issuerCountry" type="xp:string3Type" minOccurs="0"/>
+			    <xs:element name="cardProductType" type="xp:cardProductTypeEnum" minOccurs="0"/>
+	        </xs:sequence>
         </xs:complexType>
-    </xs:element>
+	</xs:element>
     
     <xs:element name="authReversalResponse" substitutionGroup="xp:transactionResponse">
         <xs:complexType>
@@ -1013,7 +1013,7 @@
         </xs:complexType>
     </xs:element>
     
-    <!-- echeck -->
+	<!-- echeck -->
     <xs:element name="echeckOrEcheckToken" abstract="true"/>
     <xs:element name="echeck" substitutionGroup="xp:echeckOrEcheckToken" type="xp:echeckType"/>
     <xs:element name="echeckToken" substitutionGroup="xp:echeckOrEcheckToken" type="xp:echeckTokenType"/>
@@ -1173,35 +1173,35 @@
     </xs:complexType>
     
             
-    <xs:element name="accountUpdater">
-        <xs:complexType>
-            <xs:choice>
-                <xs:sequence>
-                    <xs:element name="originalAccountInfo" type="xp:echeckAccountInfoType"/>
-                    <xs:element name="newAccountInfo" type="xp:echeckAccountInfoType"/>
-                </xs:sequence>
+	<xs:element name="accountUpdater">
+		<xs:complexType>
+			<xs:choice>
+				<xs:sequence>
+					<xs:element name="originalAccountInfo" type="xp:echeckAccountInfoType"/>
+					<xs:element name="newAccountInfo" type="xp:echeckAccountInfoType"/>
+				</xs:sequence>
                 
-                <xs:sequence>
-                    <xs:element name="originalTokenInfo" type="xp:echeckTokenInfoType"/>
-                    <xs:element name="newTokenInfo" type="xp:echeckTokenInfoType"/>
-                </xs:sequence>
+				<xs:sequence>
+					<xs:element name="originalTokenInfo" type="xp:echeckTokenInfoType"/>
+					<xs:element name="newTokenInfo" type="xp:echeckTokenInfoType"/>
+				</xs:sequence>
                 
-                <xs:sequence>
-                    <xs:element name="originalCardInfo" type="xp:cardAccountInfoType"/>
-                    <xs:element name="newCardInfo" type="xp:cardAccountInfoType"/>
+				<xs:sequence>
+					<xs:element name="originalCardInfo" type="xp:cardAccountInfoType"/>
+					<xs:element name="newCardInfo" type="xp:cardAccountInfoType"/>
+					<xs:element name="extendedCardResponse" type="xp:extendedCardResponseType" minOccurs="0"/>
+				</xs:sequence>
+                
+				<xs:sequence>
+					<xs:element name="originalCardTokenInfo" type="xp:cardTokenInfoType"/>
+					<xs:element name="newCardTokenInfo" type="xp:cardTokenInfoType"/>
                     <xs:element name="extendedCardResponse" type="xp:extendedCardResponseType" minOccurs="0"/>
-                </xs:sequence>
-                
-                <xs:sequence>
-                    <xs:element name="originalCardTokenInfo" type="xp:cardTokenInfoType"/>
-                    <xs:element name="newCardTokenInfo" type="xp:cardTokenInfoType"/>
-                    <xs:element name="extendedCardResponse" type="xp:extendedCardResponseType" minOccurs="0"/>
-                </xs:sequence>
+				</xs:sequence>
                 
                 <xs:element name="extendedCardResponse" type="xp:extendedCardResponseType" minOccurs="0"/>
-            </xs:choice>
-        </xs:complexType>
-    </xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
 
     <xs:element name="echeckVerificationResponse" substitutionGroup="xp:transactionResponse">
         <xs:complexType>
@@ -1257,7 +1257,7 @@
     
     
     <xs:complexType name="echeckType">
-        <xs:all>
+   	    <xs:all>
             <xs:element name="accType" type="xp:echeckAccountTypeEnum"/>
             <xs:element name="accNum" type="xp:echeckAccountNumberType"/>
             <xs:element name="routingNum" type="xp:routingNumberType"/>
@@ -1265,12 +1265,12 @@
         </xs:all>
     </xs:complexType>
 
-    <xs:complexType name="echeckForTokenType">
-        <xs:all>
-            <xs:element name="accNum" type="xp:echeckAccountNumberType"/>
-            <xs:element name="routingNum" type="xp:routingNumberType"/>
-        </xs:all>
-    </xs:complexType>
+	<xs:complexType name="echeckForTokenType">
+		<xs:all>
+			<xs:element name="accNum" type="xp:echeckAccountNumberType"/>
+			<xs:element name="routingNum" type="xp:routingNumberType"/>
+		</xs:all>
+	</xs:complexType>
         
     <xs:simpleType name="echeckAccountTypeEnum">
         <xs:restriction base="xs:string">
